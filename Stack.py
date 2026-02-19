@@ -74,3 +74,55 @@ print("Peek :",StackClass.peek())
     
 
 
+# Stack Implementation using Linked Lists
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+class Stack:
+    def __init__(self):
+        self.head = None
+        self.size = 0
+    def push(self, val):
+        newNode = Node(val)
+        if self.head is None:
+            self.head = newNode
+        else:
+            newNode.next = self.head
+            self.head = newNode
+            self.size += 1
+    def pop(self):
+        if self.IsEmpty():
+            return "Stack is empty"
+        poppedNode = self.head
+        self.head = self.head.next
+        self.size -= 1
+        return poppedNode.val
+    def  peek(self):
+        if self.IsEmpty():
+            return "Stack is empty"
+        return self.head.val
+    def IsEmpty(self):
+        if self.size == 0:
+            return True
+        return False
+    def Size(self):
+        return self.size
+    def triverse(self):
+        currentNode = self.head
+        while currentNode is not None:
+            print(currentNode.val, end=" ")
+            currentNode = currentNode.next
+        print()
+
+MyStack = Stack()
+MyStack.push(2)
+MyStack.push(1)
+MyStack.push(5)
+MyStack.push(7)
+MyStack.push(23)
+
+print("Stack LinkedList: ", end="")
+MyStack.triverse()
+print("Pop: ", MyStack.pop())
