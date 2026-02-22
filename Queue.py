@@ -27,6 +27,38 @@ print("Size of the queue is: ", len(queue))
 
 
 
+#Python Class using Queue
+
+class Queue:
+   def __init__(self):
+      self.queue = []
+   def enqueue(self , val):
+       self.queue.append(val)
+   def deueue(self):
+       if(len(self.queue) == 0):
+           return "Queue is Empty"
+       return self.queue.pop(0)
+   def peek(self):
+       if(len(self.queue) == 0):
+           return "Queue is Empty"
+       return self.queue[0]
+   def isEmpty(self):
+       return len(self.queue) == 0
+   def size(self):
+       return len(self.queue)
+   
+QueueObj  = Queue()
+QueueObj.enqueue(3)
+QueueObj.enqueue(45)
+QueueObj.enqueue(21)
+QueueObj.enqueue(67)
+QueueObj.enqueue(89)
+print("Queue Numbers :",QueueObj.queue)
+print("Peeked Number :" ,QueueObj.peek())   
+
+
+
+
 
 
 
