@@ -57,9 +57,60 @@ print("Queue Numbers :",QueueObj.queue)
 print("Peeked Number :" ,QueueObj.peek())   
 
 
+#Implementing Queue using Linked List
 
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+        self.size = 0
+    def enqueue(self, data):
+        newNode = Node(data)
+        if self.rear is None:
+            self.front = self.rear = newNode
+            self.size += 1  
+            return
+        else:
+            self.rear.next = newNode
+            self.rear = newNode
+            self.size += 1
+    def dequeue(self):
+        if self.isEmpty():
+            return "Queue is Empty"
+        temp = self.front
+        self.front = temp.next
+        self.size -= 1
+        if self.front is None:
+            self.rear = None
+        return temp.data
+    def peek(self):
+        if self.isEmpty():
+            return "Queue is Empty"
+        return self.front.data
+    def isEmpty(self):
+        return self.size == 0   
+    def size(self):
+        return self.size
+    def display(self):
+        isEmpty = self.isEmpty()
+        if self.isEmpty():
+            return "Queue is Empty"
+        cur = self.front
+        while cur:
+            print(cur.data, end=" ")
+            cur = cur.next
+        print()
+QueueObj = Queue()
+QueueObj.enqueue(10)
+QueueObj.enqueue(3)
+QueueObj.enqueue(45)
+QueueObj.enqueue(21)
+QueueObj.enqueue(67)
+QueueObj.enqueue(89)
+QueueObj.display()
 
-
-
-
-
+print("Peeked Number :" ,QueueObj.peek())   
